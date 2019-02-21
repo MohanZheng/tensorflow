@@ -15,13 +15,14 @@ graph = pydotplus.graph_from_dot_data(dot_data)
 graph.write_pdf("iris.pdf")
 
 
+
+''' 
 from sklearn import tree
 X = [[0, 0], [2, 2]]
 y = [1.5, 2.5]
 clf = tree.DecisionTreeRegressor()
 clf = clf.fit(X, y)
 print(clf.predict([[1, 1]]))
-
-
+'''
 
 

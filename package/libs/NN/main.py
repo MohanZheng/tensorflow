@@ -38,12 +38,10 @@ print(clf_y.best_estimator_)
 
 # 随机收索
 import report
-import re
 n_iter_search = 20
-parameters = {'multi_class': ['ovr', 'ovo'], 'kernel': ('rbf', 'poly'), 'degree': [1, 2, 3], 'C': [1, 5, 10]}
+parameters = {'kernel': ('rbf', 'poly'), 'degree': [1, 2, 3], 'C': [1, 5, 10]}
 clf_x = svm.SVC()
-random_search = RandomizedSearchCV(clf_x, param_distributions=parameters,
-                                   n_iter=n_iter_search)
+random_search = RandomizedSearchCV(clf_x, param_distributions=parameters, n_iter=n_iter_search)
 random_search.fit(offline_rss, offline_location[:, 0])
 report(random_search.cv_results_)
 

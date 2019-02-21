@@ -37,8 +37,7 @@ X = np.array([
  [5., 3.4, 1.6, 0.4], [7.2, 3.6, 6.1, 2.5], [5., 3.5, 1.3, 0.3], [6.3, 2.7, 4.9, 1.8], [7.6, 3., 6.6, 2.1],
  [5.4, 3.7, 1.5, 0.2], [5.5, 2.4, 3.7, 1.], [5., 3.2, 1.2, 0.2], [5.2, 2.7, 3.9, 1.4], [7.1, 3.5, 3.1, 3.5],
  [5.4, 3.2, 5.3, 2.3], [3.5, 3.4, 1.3, 0.2], [8.2, 3.2, 6., 1.8], [2., 3.4, 1.6, 0.4], [9.2, 3.6, 6.1, 2.5],
- [4., 3.5, 1.3, 0.3], [4.3, 2.7, 4.9, 1.8], [7.3, 3., 6.6, 2.1], [2.4, 3.7, 1.5, 0.2], [4.5, 2.4, 3.7, 1.]
-])
+ [4., 3.5, 1.3, 0.3], [4.3, 2.7, 4.9, 1.8], [7.3, 3., 6.6, 2.1], [2.4, 3.7, 1.5, 0.2], [4.5, 2.4, 3.7, 1.]])
 y = np.array([0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1,  0, 1, 1, 1, 0,
               1, 0, 1, 1, 1])
 X = X.tolist()
@@ -50,8 +49,7 @@ X_train, X_test, y_train, y_test = ts(X, y, test_size=0.3)
 # 调参
 from sklearn.model_selection import GridSearchCV
 import pandas as pd
-'''
-svr = svm.SVC()
+svr = svm.SVC(random_state=1)
 #parameters = {'kernel': ('rbf', 'linear', 'poly', 'sigmoid'), 'degree': [1, 2, 3, 4, 5], 'C': [1, 3, 5, 7, 10],
 #              'decision_function_shape': ['ovr', 'ovo'],
 #              'gamma': [0.125, 0.25, 0.5, 1, 2, 4]}
@@ -64,12 +62,15 @@ with open('cv_result.csv', 'w') as f:
 
 print(clf.best_estimator_)
 print(clf.best_params_)
- '''
-clf_linear = svm.SVC(kernel='sigmoid', C=1)
+
+
+
+''' 
+clf_linear = svm.SVC(kernel='rbf', C=1, random_state=1)
 clf_linear.fit(X_train, y_train)
 score_linear = clf_linear.score(X_test, y_test)
 print("The score of sigmoid is : %f" % score_linear)
-
+'''
 
 ''' 
 import report
